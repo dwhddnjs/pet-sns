@@ -41,6 +41,34 @@ const postCtr = {
     const post = await Post.findById(id);
     res.render("detail", { post: post });
   },
+  updateLayout: async (req, res) => {
+    const { id } = req.params;
+    const post = await Post.findById(id);
+    res.render("update", { post: post });
+  },
+  update: async (req, res) => {
+    const { id } = req.params;
+    const { title, content } = req.body;
+    try {
+      await Post.findByIdAndUpdate(
+        id,
+        { title: title, content: content },
+        { new: true }
+      );
+      res.redirect("/");
+    } catch (err) {
+      res.status(500).send("update err");
+    }
+  },
+  delete: async (req, res) => {
+    const { id } = req.params;
+    try {
+      await Post.findByIdAndDelete(id);
+      res.redirect("/");
+    } catch (error) {
+      res.status(500).send("delete err");
+    }
+  },
 };
 
 module.exports = postCtr;
