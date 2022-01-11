@@ -18,6 +18,7 @@ const postCtr = {
   upload: async (req, res) => {
     const { title, content } = req.body;
     const image = req.file.location;
+    console.log(req.file);
     const publishedDate = formatDate(new Date());
     const post = new Post({
       title: title,
