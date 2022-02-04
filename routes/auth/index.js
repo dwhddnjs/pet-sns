@@ -2,8 +2,6 @@ const express = require("express");
 const router = express.Router();
 const authCtr = require("../../controller/authCtr");
 
-// /auth/login
-
 router.post("/register", authCtr.register);
 
 router.get("/login", (req, res) => {

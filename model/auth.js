@@ -7,3 +7,4 @@ const authSchema = new Schema({
 });
 
 module.exports = mongoose.model("auth", authSchema);
+
